@@ -1,6 +1,13 @@
-<h1><%= @list.name %></h1>
-<div style="margin: 12px">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Enjoy movies</h1>
+
+    <p> <%= @list.name %></p>
   <%= link_to 'Add a bookmark', new_list_bookmark_path(@list), class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div style="margin: 12px">
 </div>
 <div>
   <% @list.bookmarks.each do |bookmark| %>
