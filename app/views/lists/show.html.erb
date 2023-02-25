@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png'%>);">
   <div class="container">
     <h1>Enjoy movies</h1>
 
@@ -11,8 +11,7 @@
 </div>
 <div>
   <% @list.bookmarks.each do |bookmark| %>
-      <div class="co-12 colsm-6 col-md-4">
-        <div class="card-category" data-aos="zoom-in">
+        <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://image.tmdb.org/t/p/w500<%=  bookmark.movie.poster_url%>')">
           <div style='display: flex; justify-content: flex-start; margin: 12px;';>
             <div>
               <strong><%= bookmark.movie.title %></strong>
@@ -33,6 +32,8 @@
             </div>
           </div>
         </div>
-      </div>
   <% end %>
 </div>
+<% if @list.photo.attached? %>
+ <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>

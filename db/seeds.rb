@@ -3,6 +3,8 @@ require 'open-uri'
 
 
 url = "https://tmdb.lewagon.com/movie/top_rated"
+"https://tmdb.lewagon.com/t/p/w500"
+
 
 data = JSON.parse(URI.open(url).read)["results"]
 
